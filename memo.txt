@@ -6,3 +6,38 @@ npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10
 @babel/node@7.12.10 nodemon@2.0.7
 
 nodemon giúp chạy lại project khi save
+ npm i sequelize 
+
+ thiết kế cơ sở dữ liệu 
+
+
+ user 
+    admin 
+    doctor
+    patient
+
+->{
+    id, email, pasword, address, phoneNumber,
+    gender, roled
+}
+
+
+schodule ->{
+    id, currentNumber, maxNumber, date, timeType, doctorId
+}
+
+
+history ->{
+    id, patientID, 
+    doctorID, description
+}
+
+allcode ->{
+    Id, key{
+        role, status, time
+    }, type, value
+}
+
+booking ->{
+    id, statusId,doctorId, PatientId,date, time
+}
