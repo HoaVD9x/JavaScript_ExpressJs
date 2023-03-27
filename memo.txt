@@ -41,3 +41,5 @@ allcode ->{
 booking ->{
     id, statusId,doctorId, PatientId,date, time
 }
+
+1 doctor -clinic- 
