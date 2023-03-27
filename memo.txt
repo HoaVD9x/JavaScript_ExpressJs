@@ -43,3 +43,9 @@ booking ->{
 }
 
 1 doctor -clinic- 
+
+
+
+
+sau khi clone git về thì phải tải các dependeci phụ thuộc vào 
+npm i
