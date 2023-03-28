@@ -6,10 +6,34 @@ import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 
 class Login extends Component {
-	// eslint-disable-next-line no-useless-constructor
 	constructor(props) {
 		super(props);
+		this.state = {
+			userName: '',
+			password: '',
+			isShowTruePassword: false,
+		};
 	}
+
+	handlerUserName = (event) => {
+		this.setState({
+			userName: event.target.value,
+		});
+	};
+	handlerPassword = (event) => {
+		this.setState({
+			password: event.target.value,
+		});
+	};
+	handlerSubmit = (event) => {
+		alert('succss');
+	};
+
+	handlerShowPassword = () => {
+		this.setState({
+			isShowTruePassword: !this.state.isShowTruePassword,
+		});
+	};
 	render() {
 		//JSX
 		return (
@@ -23,18 +47,49 @@ class Login extends Component {
 								type='text'
 								className='form-control login-input'
 								placeholder='Enter your User Name'
+								value={this.state.userName}
+								onChange={(event) => {
+									this.handlerUserName(event);
+								}}
 							/>
 						</div>
 						<div className='col-12 form-group'>
 							<label>Password</label>
-							<input
-								type='password'
-								className='form-control login-input'
-								placeholder='Enter your Password'
-							/>
+							<div className='customer-input-password'>
+								<input
+									type={
+										this.state.isShowTruePassword
+											? 'text'
+											: 'password'
+									}
+									className='form-control login-input'
+									placeholder='Enter your Password'
+									value={this.state.password}
+									onChange={(event) => {
+										this.handlerPassword(event);
+									}}
+								/>
+								<span
+									onClick={() => {
+										this.handlerShowPassword();
+									}}>
+									<i
+										className={
+											this.state.isShowTruePassword
+												? 'far fa-eye'
+												: 'fas fa-eye-slash'
+										}></i>
+								</span>
+							</div>
 						</div>
 						<div className='col-12'>
-							<button className='btn-login'>Login</button>
+							<button
+								className='btn-login'
+								onClick={(event) => {
+									this.handlerSubmit(event);
+								}}>
+								Login
+							</button>
 						</div>
 						<div className='col-12'>
 							<span className='forgot-password'>
