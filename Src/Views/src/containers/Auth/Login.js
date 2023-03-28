@@ -46,9 +46,9 @@ class Login extends Component {
 							<span className='text-orther-login'>or Login with : </span>
 						</div>
 						<div className='col-12 social-login'>
-							<i class='fab fa-google-plus-g'></i>
-							<i class='fab fa-facebook-square'></i>
-							<i class='fab fa-github'></i>
+							<i className='fab fa-google-plus-g  google'></i>
+							<i className='fab fa-facebook-square facebook'></i>
+							<i className='fab fa-github github'></i>
 						</div>
 					</div>
 				</div>
