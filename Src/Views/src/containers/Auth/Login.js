@@ -4,20 +4,21 @@ import { push } from 'connected-react-router';
 import * as actions from '../../store/actions';
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
+import { handlerLogin } from '../../services/UserServices';
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			userName: '',
+			email: '',
 			password: '',
 			isShowTruePassword: false,
 		};
 	}
 
-	handlerUserName = (event) => {
+	handlerEmail = (event) => {
 		this.setState({
-			userName: event.target.value,
+			email: event.target.value,
 		});
 	};
 	handlerPassword = (event) => {
@@ -25,8 +26,13 @@ class Login extends Component {
 			password: event.target.value,
 		});
 	};
-	handlerSubmit = (event) => {
-		alert('succss');
+	handlerSubmit = async () => {
+		try {
+			await handlerLogin(this.state.email, this.state.password);
+			alert('succss');
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	handlerShowPassword = () => {
@@ -47,9 +53,9 @@ class Login extends Component {
 								type='text'
 								className='form-control login-input'
 								placeholder='Enter your User Name'
-								value={this.state.userName}
+								value={this.state.email}
 								onChange={(event) => {
-									this.handlerUserName(event);
+									this.handlerEmail(event);
 								}}
 							/>
 						</div>
@@ -85,8 +91,8 @@ class Login extends Component {
 						<div className='col-12'>
 							<button
 								className='btn-login'
-								onClick={(event) => {
-									this.handlerSubmit(event);
+								onClick={() => {
+									this.handlerSubmit();
 								}}>
 								Login
 							</button>
